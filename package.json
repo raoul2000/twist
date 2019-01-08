@@ -1,0 +1,23 @@
+{
+  "name": "twist",
+  "version": "0.0.1",
+  "description": "experiment around danse",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raoul2000/twist.git"
+  },
+  "author": "raoul2000",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/raoul2000/twist/issues"
+  },
+  "homepage": "https://github.com/raoul2000/twist#readme",
+  "dependencies": {
+    "@types/quill": "^2.0.1",
+    "quill": "^1.3.6"
+  }
+}
