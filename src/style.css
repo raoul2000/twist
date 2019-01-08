@@ -6,6 +6,10 @@ body {
   height: 100%;
 }
 
+.ql-save:after{  
+  content: 's';
+}
+
 #toolbar-container {
   position: fixed;
   width: 100%;
