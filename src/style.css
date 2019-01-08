@@ -1,0 +1,33 @@
+html {
+  height: 100%;
+}
+body {
+  margin: 0;
+  height: 100%;
+}
+
+#toolbar-container {
+  position: fixed;
+  width: 100%;
+  background-color: #ffffff;
+  z-index: 100;  
+}
+
+/* Tell Quill not to scroll */
+#quill-container {
+  height: auto;
+  min-height: 100%;
+  padding-top: 50px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+#quill-container .ql-editor {
+  font-size: 18px;
+  overflow-y: visible; 
+}
+
+/* Specify our own scrolling container */
+#scrolling-container {
+  min-height: 100%;
+  overflow-y: auto;
+}
