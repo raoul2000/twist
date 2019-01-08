@@ -1,3 +1,6 @@
+import Quill from '../node_modules/quill/dist/quill.js';
+import '../node_modules/quill/dist/quill.snow.css'
+import './style.css';
 
 /**
  * @type {Quill} Quill instance
