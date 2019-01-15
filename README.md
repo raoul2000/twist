@@ -18,3 +18,8 @@ npm start
 # build app
 npm run build
 ```
+
+## Resources
+
+- [Side Panel](https://codyhouse.co/demo/slide-in-panel/index.html)
+- [Quill](https://codepen.io/anon/pen/gLzmXo)

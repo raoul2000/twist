@@ -111,27 +111,9 @@
             </div>
         </div>
     </main>
-
-    <div id="slide-panel" class="cd-panel cd-panel--from-right js-cd-panel-main">
-
-        <div class="cd-panel__container">
-            <header class="cd-panel__header">
-                <div class="header-container flex-container">
-                    <div class="flex-item">
-                        <div>title goes here</div>
-                    </div>
-                    <div class="flex-item">
-                        <button id="close-panel">close</button>            
-                    </div>
-                </div>
-            </header>
-            
-            <div class="cd-panel__content">
-                
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Debitis hic vel voluptates, qui possimus consequuntur, exercitationem asperiores veniam doloremque quae nam necessitatibus quidem dolorem. Quo rerum quas laborum explicabo praesentium.
-            </div> <!-- cd-panel__content -->
-        </div> <!-- cd-panel__container -->
-    </div> <!-- cd-panel -->
+    <div id="slide-panel" class="cd-panel cd-panel--from-right">
+        {{> partials/side-panel }}
+    </div>
 </body>
 
 </html>
