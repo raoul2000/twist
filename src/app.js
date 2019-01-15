@@ -1,4 +1,4 @@
-import Quill from '../node_modules/quill/dist/quill.js';
+import Quill from 'quill';
 import '../node_modules/quill/dist/quill.snow.css'
 import './style.css';
 
@@ -16,7 +16,6 @@ const initEditor = () => {
       });    
     
     quill = new Quill('#quill-container', {
-
         modules: {
             toolbar: { 
                 container : '#toolbar-container'
@@ -30,6 +29,19 @@ const initEditor = () => {
     });
 };
 
+const initSlidePanel = () => {
+    document.getElementById('open-panel').addEventListener('click', (ev) => {
+        document.getElementById('slide-panel').classList.add('cd-panel--is-visible');
+        document.querySelector('.cd-main-content').style.display = 'none';
+    });
+    document.getElementById('close-panel').addEventListener('click', (ev) => {
+        document.getElementById('slide-panel').classList.remove('cd-panel--is-visible');
+        document.querySelector('.cd-main-content').style.display = 'block';
+    });
+}
+
 document.addEventListener('DOMContentLoaded', (event) => {
+    initSlidePanel();
     initEditor();
+    document.querySelector('body').style.display = "block";
 });
