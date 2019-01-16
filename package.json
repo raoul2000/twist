@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/raoul2000/twist#readme",
   "dependencies": {
+    "bootstrap": "^4.2.1",
     "quill": "^1.3.6"
   },
   "devDependencies": {

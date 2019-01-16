@@ -1,5 +1,6 @@
 import Quill from 'quill';
 import '../node_modules/quill/dist/quill.snow.css'
+import '../node_modules/bootstrap/dist/css/bootstrap-grid.min.css';
 import './style.less';
 
 // https://codepen.io/anon/pen/gLzmXo
