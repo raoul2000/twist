@@ -44,9 +44,9 @@ cd-panel {
     position: fixed;
     top: 0;
     width: 100%;
-    height: 50px;
+    /*height: 50px;*/
     transition: transform 0.3s 0s;
-    transform: translateY(-50px);
+    transform: translateY(-55px);
 }
 
 .cd-panel--from-right .cd-panel__header {
@@ -90,7 +90,7 @@ cd-panel {
 .cd-panel__content {
     height: calc(100% - 70px);
     overflow: auto;
-    margin-top: 3em;
+    margin-top: 3.4em;
     padding: 1em;
 }
 
@@ -138,8 +138,11 @@ cd-panel {
 #toolbar-container {
     position: fixed;
     width: 100%;
-    background-color: #ffffff;
+    background-color: #f8f9fa;
     z-index: 5;
+    border-right-width: 0px;
+    border-top-width: 0px;
+    border-left-width: 0px;
 }
 
 /* Tell Quill not to scroll */
@@ -147,9 +150,8 @@ cd-panel {
 #quill-container {
     height: auto;
     min-height: 100%;
-    padding-top: 50px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-top: 7em;
+    border-width: 0px;
 }
 
 #quill-container .ql-editor {

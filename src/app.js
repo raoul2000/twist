@@ -1,6 +1,6 @@
 import Quill from 'quill';
 import '../node_modules/quill/dist/quill.snow.css'
-import '../node_modules/bootstrap/dist/css/bootstrap-grid.min.css';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './style.less';
 
 // https://codepen.io/anon/pen/gLzmXo
@@ -31,16 +31,25 @@ const initEditor = () => {
 };
 
 const initSlidePanel = () => {
+    const mainContent = document.querySelector('.cd-main-content');
+
+    document.getElementById('slide-panel').addEventListener('transitionend',(ev)=> {
+        console.log('on anima end');
+    });
+
     document.getElementById('open-panel').addEventListener('click', (ev) => {
         document.getElementById('slide-panel').classList.add('cd-panel--is-visible');
-        document.querySelector('.cd-main-content').classList.remove('visible');
-        document.querySelector('.cd-main-content').classList.add('hidden');
-        document.querySelector('.cd-main-content').style.display = 'none';
+        mainContent.classList.remove('visible');
+        mainContent.classList.add('hidden');
+
+        mainContent.style.display = 'none';
     });
     document.getElementById('close-panel').addEventListener('click', (ev) => {
         document.getElementById('slide-panel').classList.remove('cd-panel--is-visible');
-        document.querySelector('.cd-main-content').classList.add('visible');
-        document.querySelector('.cd-main-content').classList.remove('hidden');
+        mainContent.classList.add('visible');
+        mainContent.classList.remove('hidden');
+        //TODO: display = block is applied before the transition end which causes the vertical scroll bar to be displayed. It would be better to display when transition ends
+        
         document.querySelector('.cd-main-content').style.display = 'block';
 
     });
