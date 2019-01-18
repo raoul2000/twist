@@ -32,26 +32,32 @@ const initEditor = () => {
 
 const initSlidePanel = () => {
     const mainContent = document.querySelector('.cd-main-content');
+    const slidePanel = document.getElementById('slide-panel');
 
-    document.getElementById('slide-panel').addEventListener('transitionend',(ev)=> {
-        console.log('on anima end');
-    });
-
+    // open the panel 
     document.getElementById('open-panel').addEventListener('click', (ev) => {
-        document.getElementById('slide-panel').classList.add('cd-panel--is-visible');
-        mainContent.classList.remove('visible');
-        mainContent.classList.add('hidden');
 
-        mainContent.style.display = 'none';
+        mainContent.addEventListener('transitionend', (ev)=> {
+            mainContent.style.display = 'none';
+        },{"once" : true});
+
+        mainContent.classList.remove('visible');
+        mainContent.classList.add('hidden');        
+        slidePanel.classList.add('cd-panel--is-visible');
     });
-    document.getElementById('close-panel').addEventListener('click', (ev) => {
-        document.getElementById('slide-panel').classList.remove('cd-panel--is-visible');
+
+    // close the panel
+    document.getElementById('close-panel').addEventListener('click', (ev) => {      
+        slidePanel.addEventListener('transitionend', (ev)=> {
+            setTimeout( () => {
+                mainContent.style.display = 'block';
+            },300);            
+            
+        },{"once" : true});
+
+        slidePanel.classList.remove('cd-panel--is-visible');
         mainContent.classList.add('visible');
         mainContent.classList.remove('hidden');
-        //TODO: display = block is applied before the transition end which causes the vertical scroll bar to be displayed. It would be better to display when transition ends
-        
-        document.querySelector('.cd-main-content').style.display = 'block';
-
     });
 }
 
