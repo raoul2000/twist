@@ -15,25 +15,6 @@ const initEditor = () => {
 
     let Inline = Quill.import('blots/inline');
 
-
-    quill = new Quill('#quill-container', {
-        modules: {
-            toolbar: {
-                container: '#toolbar-container'
-            }
-        },
-        bounds: '#scrolling-container',
-        scrollingContainer: '#scrolling-container',
-        placeholder: 'Enter your text',
-        readOnly: false,
-        theme: 'snow'
-    });
-
-    document.querySelector('.ql-save').addEventListener('click', function (e) {
-        console.log(quill.getContents());
-        debugger;
-    });
-
     let BlockEmbed = Quill.import('blots/block/embed');
 
     class DividerBlot extends BlockEmbed { }
@@ -44,7 +25,7 @@ const initEditor = () => {
         let range = quill.getSelection(true);
         quill.insertText(range.index, '\n', Quill.sources.USER);
         quill.insertEmbed(range.index + 1, 'divider', true, Quill.sources.USER);
-        quill.setSelection(range.index + 2, Quill.sources.SILENT);        
+        quill.setSelection(range.index + 2, Quill.sources.SILENT);
     });
 
     let Block = Quill.import('blots/block');
@@ -58,6 +39,14 @@ const initEditor = () => {
         quill.format('blockquote1', true);
     });
 
+    class TitleBlot extends Block { }
+    TitleBlot.blotName = 'titleName';
+    TitleBlot.tagName = 'title';
+    Quill.register(TitleBlot);
+
+    document.getElementById('title-button').addEventListener('click', (ev) => {
+        quill.format('titleName', true);
+    });
 
     class DummyBlot extends Inline { }
     DummyBlot.blotName = 'dummyName';
@@ -68,6 +57,46 @@ const initEditor = () => {
     document.getElementById('custom1-button').addEventListener('click', (ev) => {
         quill.format('dummyName', true);
     });
+
+
+    quill = new Quill('#quill-container', {
+        modules: {
+            toolbar: {
+                container: '#toolbar-container'
+            },
+            keyboard: {
+                bindings: {
+                    titleName: {
+                        key: 'backspace',
+                        handler: function (range, keycontext) {
+                            return true;
+                            let format = quill.getFormat(range.index - 1);
+                            if (!format.titleName && !keycontext.format.titleName) {
+                                // propogate to Quill's default
+                                return true;
+                            } // else do nothing to prevent deleting video
+                        }
+                    }
+                }
+            }
+        },
+        bounds: '#scrolling-container',
+        scrollingContainer: '#scrolling-container',
+        placeholder: 'Enter your text',
+        readOnly: false,
+        theme: 'snow'
+    });
+
+    document.querySelector('.ql-save').addEventListener('click', function (e) {
+        console.log(quill.getContents());
+        debugger;
+    });
+    // bindings
+    /*
+    quill.keyboard.addBinding({ "key": 'backspace' }, (range, context) => {
+        debugger;
+    });*/
+
 
 };
 
